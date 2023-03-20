@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+
 const bodyParser = require('body-parser');
 
-const Sauces = require('./models/sauces-model');
+const userRoutes = require('./routes/user');
+
 
 // Pour se conneceter à la base de données
 mongoose.connect('mongodb+srv://bill:AJAbHh3L9A7THbeJ@cluster1.rx3jbwe.mongodb.net/?retryWrites=true&w=majority',
@@ -21,8 +23,10 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
   });
+  
 
-app.post
+app.use('/api/auth/', userRoutes);
+
 
 module.exports = app;
 
