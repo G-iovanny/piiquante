@@ -7,6 +7,7 @@ const router = express.Router();
 
 
 
+
 router.get('/', saucesCtrl.getAllSauces);   // Pour récupéter toutes les sauces
 router.get('/:id', saucesCtrl.getOneSauce); // Pour récupérer une sauce unique
 router.post('/', auth, multerConfig, saucesCtrl.createSauce); // Pour ajouter une sauce

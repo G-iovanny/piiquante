@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const userRoutes = require('./routes/user');
 const saucesRoutes = require('./routes/sauces');
+const likesRoutes = require('./routes/likes');
 
 // Pour se connecter à la base de données
 mongoose.connect('mongodb+srv://bill:AJAbHh3L9A7THbeJ@cluster1.rx3jbwe.mongodb.net/?retryWrites=true&w=majority',
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
 // Monter les routes
 app.use('/api/auth/', userRoutes);
 app.use('/api/sauces', saucesRoutes);
+app.use('/api/sauces/', likesRoutes);
 
 
 
