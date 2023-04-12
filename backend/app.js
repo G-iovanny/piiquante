@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -8,11 +10,12 @@ const saucesRoutes = require('./routes/sauces');
 const likesRoutes = require('./routes/likes');
 
 // Pour se connecter à la base de données
-mongoose.connect('mongodb+srv://bill:AJAbHh3L9A7THbeJ@cluster1.rx3jbwe.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect(process.env.DB_CONNECTION_STRING,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
+
 
 // Middleware pour parser les données JSON
 app.use(express.json());

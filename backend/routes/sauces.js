@@ -6,12 +6,10 @@ const saucesCtrl = require('../controllers/sauces');
 const router = express.Router();
 
 
-
-
-router.get('/', saucesCtrl.getAllSauces);   // Pour récupéter toutes les sauces
+router.get('/', saucesCtrl.getAllSauces);   // Pour récupérer toutes les sauces
 router.get('/:id', saucesCtrl.getOneSauce); // Pour récupérer une sauce unique
 router.post('/', auth, multerConfig, saucesCtrl.createSauce); // Pour ajouter une sauce
 router.put('/:id', auth, multerConfig, saucesCtrl.modifySauce); // Pour modifier une sauce
-router.delete('/:id', saucesCtrl.deleteSauce); // Pour supprimer une sauce
+router.delete('/:id', auth, saucesCtrl.deleteSauce); // Pour supprimer une sauce
  
 module.exports = router;

@@ -8,7 +8,7 @@ module.exports.signup = (req, res, next) => {
     .then(hash => { // On récupère le hash généré par bcrypt
         const user = new User({ // On crée un nouvel utilisateur avec l'e-mail et le mot de passe hashé
             email: req.body.email,
-            password: hash
+            password: hash 
         })
         user.save() // On sauvegarde l'utilisateur dans la base de données
         .then(() => res.status(201).json({message: 'Utilisateur créé'})) // On envoie une réponse JSON indiquant que l'utilisateur a été créé
